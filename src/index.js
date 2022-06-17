@@ -30,7 +30,7 @@ const start = async () => {
     const chatId = message.chat.id;
 
     try {
-      if (text === '/start') {
+      if (text === '/start' || text === '🏁 Старт') {
         let str_commands = array_commands
           .map((element) => {
             return ` - ${element.command} - ${element.description} \n`;
@@ -47,11 +47,21 @@ const start = async () => {
         await bot.sendMessage(chatId, msg, {
           parse_mode: 'HTML',
           reply_to_message_id: message.message_id,
+          reply_markup: {
+            keyboard: [
+              [{ text: '🏁 Старт' }],
+              [{ text: '📅 Тып тыдня ў БрДТУ' }],
+              [{ text: 'ℹ️ Пра праграміста' }],
+            ],
+            resize_keyboard: true,
+            one_time_keyboard: false,
+          },
         });
+
         return;
       }
 
-      if (text === '/day') {
+      if (text === '/day' || text === '📅 Тып тыдня ў БрДТУ') {
         await bot.sendMessage(chatId, `${whatWeekend()}`, {
           parse_mode: 'HTML',
           reply_to_message_id: message.message_id,
@@ -68,7 +78,7 @@ const start = async () => {
         return;
       }
 
-      if (text === '/about') {
+      if (text === '/about' || text === 'ℹ️ Пра праграміста') {
         let msg = '';
         // msg += '<b>Каманда</b>: \n';
         // msg += '<pre>/about</pre>\n\n';
