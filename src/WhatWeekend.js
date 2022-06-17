@@ -46,8 +46,8 @@ function getWeekType(string_date) {
     }
 
     let result_msg = '';
-    result_msg += `<b>Каманда</b>: \n`;
-    result_msg += `<pre>/day ${d1.toJSON()}</pre>\n\n`;
+    // result_msg += `<b>Каманда</b>: \n`;
+    // result_msg += `<pre>/day ${d1.toJSON()}</pre>\n\n`;
     result_msg += `<b>Тып тыдня ў БрДТУ</b>: \n`;
 
     if (type % 2 == 0) {

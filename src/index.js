@@ -25,9 +25,9 @@ const bot = new TelegramApi(token, { polling: true });
 
 const start = async () => {
   bot.setMyCommands(array_commands);
-  bot.on('message', async (msg) => {
-    const text = msg.text;
-    const chatId = msg.chat.id;
+  bot.on('message', async (message) => {
+    const text = message.text;
+    const chatId = message.chat.id;
 
     try {
       if (text === '/start') {
@@ -38,14 +38,15 @@ const start = async () => {
           .join('');
 
         let msg = '';
-        msg += '<b>Каманда</b>: \n';
-        msg += '<pre>/start</pre>\n\n';
+        // msg += '<b>Каманда</b>: \n';
+        // msg += '<pre>/start</pre>\n\n';
         msg += 'Прывітанне! \n\n';
         msg += 'Што я магу: \n';
         msg += `${str_commands}`;
 
         await bot.sendMessage(chatId, msg, {
           parse_mode: 'HTML',
+          reply_to_message_id: message.message_id,
         });
         return;
       }
@@ -53,6 +54,7 @@ const start = async () => {
       if (text === '/day') {
         await bot.sendMessage(chatId, `${whatWeekend()}`, {
           parse_mode: 'HTML',
+          reply_to_message_id: message.message_id,
         });
         return;
       }
@@ -61,14 +63,15 @@ const start = async () => {
         const string_date = text.split(' ')[1];
         await bot.sendMessage(chatId, `${whatWeekend(string_date)}`, {
           parse_mode: 'HTML',
+          reply_to_message_id: message.message_id,
         });
         return;
       }
 
       if (text === '/about') {
         let msg = '';
-        msg += '<b>Каманда</b>: \n';
-        msg += '<pre>/about</pre>\n\n';
+        // msg += '<b>Каманда</b>: \n';
+        // msg += '<pre>/about</pre>\n\n';
         msg += '<b>Распрацаваў</b>: \n';
         msg += 'студэнт факультэта ЭIС \n';
         msg += '3 курса VI семестра \n';
@@ -79,18 +82,28 @@ const start = async () => {
         await bot.sendMessage(chatId, msg, {
           parse_mode: 'HTML',
           disable_web_page_preview: true,
+          reply_to_message_id: message.message_id,
         });
         return;
       }
 
-      await bot.sendMessage(chatId, 'Я цябе не разумею. Паспрабуй яшчэ раз :)');
+      await bot.sendMessage(
+        chatId,
+        'Я цябе не разумею. Паспрабуй яшчэ раз :)',
+        {
+          reply_to_message_id: message.message_id,
+        }
+      );
       return;
     } catch (e) {
       console.log(e);
       bot.sendMessage(chatId, '' + e);
       return bot.sendMessage(
         chatId,
-        'Адбылася памылка на серверы. Выклікай праграміста :)'
+        'Адбылася памылка на серверы. Выклікай праграміста :)',
+        {
+          reply_to_message_id: message.message_id,
+        }
       );
     }
   });
