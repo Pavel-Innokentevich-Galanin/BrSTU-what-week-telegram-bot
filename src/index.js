@@ -36,13 +36,17 @@ const start = async () => {
             return ` - ${element.command} - ${element.description} \n`;
           })
           .join("");
-        await bot.sendMessage(
-          chatId,
-          `Прывітанне. Што я магу:\n${str_commands}`,
-          {
-            parse_mode: "Markdown",
-          }
-        );
+
+        let msg = "";
+        msg += "<b>Каманда</b>: \n";
+        msg += "<pre>/start</pre>\n\n";
+        msg += "Прывітанне! \n\n";
+        msg += "Што я магу: \n";
+        msg += `${str_commands}`;
+
+        await bot.sendMessage(chatId, msg, {
+          parse_mode: "HTML",
+        });
         return;
       }
 
@@ -63,6 +67,8 @@ const start = async () => {
 
       if (text === "/about") {
         let msg = "";
+        msg += "<b>Каманда</b>: \n";
+        msg += "<pre>/about</pre>\n\n";
         msg += "<b>Распрацаваў</b>: \n";
         msg += "студэнт факультэта ЭIС \n";
         msg += "3 курса VI семестра \n";
