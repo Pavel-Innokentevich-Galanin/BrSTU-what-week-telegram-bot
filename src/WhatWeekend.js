@@ -5,7 +5,7 @@ function getWeekType(string_date) {
   try {
     let d = new Date(string_date);
 
-    if (d == "Invalid Date") {
+    if (d == 'Invalid Date') {
       d = new Date();
     }
 
@@ -40,12 +40,12 @@ function getWeekType(string_date) {
 
     let type = getWeekIndex(weeks, d1); // Вызываю функцию, которая определяет номер недели
     if (type == -1) {
-      let msg = "Памылка ў кодзе праграмы. \n\n";
-      msg += "Функцыя: <pre>getWeekIndex()</pre> \n";
+      let msg = 'Памылка ў кодзе праграмы. \n\n';
+      msg += 'Функцыя: <pre>getWeekIndex()</pre> \n';
       return msg;
     }
 
-    let result_msg = "";
+    let result_msg = '';
     result_msg += `<b>Каманда</b>: \n`;
     result_msg += `<pre>/day ${d1.toJSON()}</pre>\n\n`;
     result_msg += `<b>Тып тыдня ў БрДТУ</b>: \n`;
@@ -61,7 +61,7 @@ function getWeekType(string_date) {
     }
   } catch (e) {
     console.log(e);
-    return "" + e;
+    return '' + e;
   }
 }
 
@@ -113,46 +113,46 @@ function printDate(d = new Date()) {
 
   // return `${year}-${mounth}-${date}_${hour}-${minutes}-${seconds}`;
 
-  let msg = "";
+  let msg = '';
   msg += `<b>Дата</b>: \n`;
   msg += `${year}.${mounth}.${date} \n\n`;
 
   switch (mounth) {
-    case "01":
-      mounth = "студзень (January)";
+    case '01':
+      mounth = 'студзень (January)';
       break;
-    case "02":
-      mounth = "люты (February)";
+    case '02':
+      mounth = 'люты (February)';
       break;
-    case "03":
-      mounth = "сакавiк (March)";
+    case '03':
+      mounth = 'сакавiк (March)';
       break;
-    case "04":
-      mounth = "красавiк (April)";
+    case '04':
+      mounth = 'красавiк (April)';
       break;
-    case "05":
-      mounth = "травень (May)";
+    case '05':
+      mounth = 'травень (May)';
       break;
-    case "06":
-      mounth = "чэрвень (June)";
+    case '06':
+      mounth = 'чэрвень (June)';
       break;
-    case "07":
-      mounth = "лiпень (July)";
+    case '07':
+      mounth = 'лiпень (July)';
       break;
-    case "08":
-      mounth = "жнiвень (August)";
+    case '08':
+      mounth = 'жнiвень (August)';
       break;
-    case "09":
-      mounth = "верасень (Semtember)";
+    case '09':
+      mounth = 'верасень (Semtember)';
       break;
-    case "10":
-      mounth = "кастрычнiк (October)";
+    case '10':
+      mounth = 'кастрычнiк (October)';
       break;
-    case "11":
-      mounth = "лiстапад (November)";
+    case '11':
+      mounth = 'лiстапад (November)';
       break;
-    case "12":
-      mounth = "снежань (December)";
+    case '12':
+      mounth = 'снежань (December)';
       break;
     default:
       mounth = `${mounth} - Памылка ў кодзе праграмы.`;
@@ -165,25 +165,25 @@ function printDate(d = new Date()) {
   let day = d.getDay();
   switch (day) {
     case 0:
-      day = "нядзеля (Sunday)";
+      day = 'нядзеля (Sunday)';
       break;
     case 1:
-      day = "панядзелак (Monday)";
+      day = 'панядзелак (Monday)';
       break;
     case 2:
-      day = "аўторак (Thuesday)";
+      day = 'аўторак (Thuesday)';
       break;
     case 3:
-      day = "серада (Wednesday)";
+      day = 'серада (Wednesday)';
       break;
     case 4:
-      day = "чацвер (Thursday)";
+      day = 'чацвер (Thursday)';
       break;
     case 5:
-      day = "пятнiца (Friday)";
+      day = 'пятнiца (Friday)';
       break;
     case 6:
-      day = "субота (Saturday)";
+      day = 'субота (Saturday)';
       break;
     default:
       day = `${day} - Памылка ў кодзе праграмы.`;
@@ -201,8 +201,8 @@ function printDate(d = new Date()) {
 
 function main() {
   console.log(getWeekType());
-  console.log(" = = = = = ");
-  const d = new Date("2021-09-01");
+  console.log(' = = = = = ');
+  const d = new Date('2021-09-01');
   for (let i = 0; i < 365; ++i) {
     console.log(getWeekType(d));
     d.setDate(d.getDate() + 1);
